@@ -73,8 +73,9 @@
     font-size:clamp(38px, 7vw, 68px);
     font-weight:600; font-style:italic;
     line-height:1.05; margin:0 0 18px;
+    color:var(--amber);
   }
-  .cover-title span{ color:var(--amber); font-style:normal; }
+  .cover-title span{ font-style:normal; }
   .cover-sub{
     font-size:16px; color:var(--chalk-dim); margin:0 auto 8px;
     max-width:520px; line-height:1.6;
@@ -82,6 +83,10 @@
   .cover-credit{
     font-family:'IBM Plex Mono', monospace; font-size:12px;
     color:var(--chalk-dim); letter-spacing:0.05em; margin-top:6px;
+  }
+  .cover-turma{
+    font-family:'IBM Plex Mono', monospace; font-size:12px;
+    color:var(--chalk-dim); letter-spacing:0.05em; margin-top:2px;
   }
   .cta{
     margin-top:38px; display:inline-flex; align-items:center; gap:10px;
@@ -628,12 +633,13 @@
 <section id="view-cover" class="view">
   <div class="cover-inner">
     <div class="eyebrow">SENAR · Programa Jovem Aprendiz</div>
-    <h1 class="cover-title">Fórum <span>“Para Além<br>da Comunicação”</span></h1>
+    <h1 class="cover-title">Fórum Para Além<br>da Comunicação</h1>
     <svg class="squiggle" width="160" height="24" viewBox="0 0 160 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M2 12C14 2 22 22 34 12C46 2 54 22 66 12C78 2 86 22 98 12C110 2 118 22 130 12C138 6 144 10 158 12" stroke-width="2" stroke-linecap="round" fill="none"/>
     </svg>
-    <p class="cover-sub">Comunicação no Meio Corporativo — orientações e apresentações da turma.</p>
+    <p class="cover-sub">Guia Prático de Ferramentas da Comunicação</p>
     <p class="cover-credit">Instrutora Cássia Ribeiro</p>
+    <p class="cover-turma">Turma 202639853 · ITACITRUS</p>
     <button class="cta" onclick="location.hash='#grupos'">Ver os grupos →</button>
   </div>
 </section>
@@ -687,7 +693,8 @@ const GROUPS = [
     q:"Por que duas pessoas podem viver a mesma situação e chegar a conclusões completamente diferentes?",
     custom1:true },
   { n:2, title:"Escuta Ativa e Inteligência Relacional",
-    q:"O que significa compreender alguém antes de responder?" },
+    q:"O que significa compreender alguém antes de responder?",
+    custom2:true },
   { n:3, title:"Comunicação Não Violenta",
     q:"Como conversar sobre um problema sem transformar a outra pessoa em um adversário?",
     custom:true },
@@ -952,6 +959,192 @@ function renderGrupo1Body(){
   `;
 }
 
+const G2_QUESTOES = [
+  { q:"1. O que vocês entenderam dessa dinâmica?",
+    options:[
+      { label:"A", text:"A discussão mostrou que quem fala mais alto sempre consegue resolver os problemas.", correct:false,
+        feedback:"Não é bem isso — falar mais alto não resolve o problema, só evita a escuta." },
+      { label:"B", text:"A dinâmica mostrou que a falta de escuta pode gerar conflitos, mal-entendidos e prejudicar a convivência.", correct:true,
+        feedback:"Isso mesmo — a falta de escuta ativa é uma das principais causas de conflitos e mal-entendidos." },
+      { label:"C", text:"A melhor forma de acabar com uma discussão é ignorar o que a outra pessoa está dizendo.", correct:false,
+        feedback:"Ignorar o outro não resolve nada — só afasta e frustra." }
+    ]},
+  { q:"2. Com qual parte ou qual pessoa vocês mais se identificaram?",
+    options:[
+      { label:"A", text:"Com a pessoa que interrompia o outro o tempo todo.", correct:false,
+        feedback:"Interromper o tempo todo dificulta a escuta e gera frustração em quem está falando." },
+      { label:"B", text:"Com a pessoa que tentava falar, mas não era ouvida, mostrando como isso pode ser frustrante.", correct:true,
+        feedback:"Exatamente — não ser ouvido é frustrante e mostra a importância da escuta ativa." },
+      { label:"C", text:"Com quem preferiu sair da conversa sem tentar resolver o problema.", correct:false,
+        feedback:"Sair sem tentar resolver evita o conflito na hora, mas não resolve nada." }
+    ]},
+  { q:"3. Como vocês reagiriam diante de tal situação?",
+    options:[
+      { label:"A", text:"Continuaria discutindo até provar que eu estava certo.", correct:false,
+        feedback:"Insistir em provar que está certo tende a intensificar o conflito." },
+      { label:"B", text:"Manteria a calma, ouviria a outra pessoa com atenção e buscaria resolver o conflito por meio do diálogo.", correct:true,
+        feedback:"Essa é a atitude da escuta ativa: calma, atenção e diálogo." },
+      { label:"C", text:"Ignoraria a situação e deixaria o problema sem solução.", correct:false,
+        feedback:"Ignorar deixa o problema sem solução e pode voltar maior depois." }
+    ]}
+];
+
+let g2QuizAnswered = [];
+let g2QuizScore = 0;
+
+const G2_PRATICA = [
+  { frase:"Manter contato visual e assentir com a cabeça enquanto a pessoa fala.", correta:"ativa",
+    feedback:"Isso é escuta ativa: sinais de atenção que mostram que você está realmente presente na conversa." },
+  { frase:"Olhar para o celular enquanto um colega está explicando algo importante.", correta:"passiva",
+    feedback:"Isso é escuta passiva: a atenção está dividida e a pessoa provavelmente vai perder detalhes importantes." },
+  { frase:"Repetir com suas próprias palavras o que a pessoa disse, para confirmar que entendeu.", correta:"ativa",
+    feedback:"Isso é escuta ativa: parafrasear confirma a compreensão e mostra interesse genuíno." },
+  { frase:"Interromper para dar sua opinião antes da pessoa terminar de falar.", correta:"passiva",
+    feedback:"Isso é escuta passiva: interromper corta o raciocínio do outro e mostra que você já não está mais ouvindo." }
+];
+
+let g2PraticaAnswered = [];
+let g2PraticaScore = 0;
+
+function selectG2Pratica(idx, tipo, btnEl){
+  if(g2PraticaAnswered[idx]) return;
+  g2PraticaAnswered[idx] = true;
+
+  const item = document.getElementById('g2-pratica-' + idx);
+  const correct = G2_PRATICA[idx].correta === tipo;
+  const buttons = item.querySelectorAll('.sbi-opt-btn');
+  buttons.forEach(b => {
+    b.disabled = true;
+    if(b === btnEl) b.classList.add(correct ? 'correct-selected' : 'wrong-selected');
+  });
+
+  if(correct) g2PraticaScore++;
+
+  const fb = item.querySelector('.sbi-pratica-feedback');
+  fb.textContent = G2_PRATICA[idx].feedback;
+  fb.classList.add('show', correct ? 'ok' : 'bad');
+
+  const answeredCount = g2PraticaAnswered.filter(Boolean).length;
+  const scoreEl = document.getElementById('g2-pratica-score');
+  if(scoreEl){
+    if(answeredCount < G2_PRATICA.length){
+      scoreEl.textContent = `Respostas corretas até agora: ${g2PraticaScore} de ${answeredCount}.`;
+    } else {
+      scoreEl.textContent = `Resultado final: ${g2PraticaScore} de ${G2_PRATICA.length} respostas corretas.`;
+    }
+  }
+}
+
+function renderGrupo2Body(){
+  g2QuizAnswered = G2_QUESTOES.map(() => false);
+  g2QuizScore = 0;
+  g2PraticaAnswered = G2_PRATICA.map(() => false);
+  g2PraticaScore = 0;
+
+  const questoes = G2_QUESTOES.map((s,sIdx) => `
+    <div class="quiz-scenario" id="g2q-${sIdx}">
+      <p class="situation">${s.q}</p>
+      <div class="quiz-options">
+        ${s.options.map((o,oIdx) => `
+          <button type="button" class="quiz-opt" onclick="selectG2Option(${sIdx},${oIdx})">
+            <b>${o.label}:</b> ${o.text}
+          </button>
+        `).join('')}
+      </div>
+      <div class="quiz-feedback"></div>
+    </div>
+  `).join('');
+
+  const praticaItems = G2_PRATICA.map((p,i) => `
+    <div class="sbi-pratica-item" id="g2-pratica-${i}">
+      <p>${p.frase}</p>
+      <div class="sbi-pratica-opts">
+        <button type="button" class="sbi-opt-btn" onclick="selectG2Pratica(${i},'ativa',this)">Escuta ativa</button>
+        <button type="button" class="sbi-opt-btn" onclick="selectG2Pratica(${i},'passiva',this)">Escuta passiva</button>
+      </div>
+      <div class="sbi-pratica-feedback"></div>
+    </div>
+  `).join('');
+
+  return `
+    <div class="section-block">
+      <h4>Introdução</h4>
+      <button type="button" class="simple-reveal-btn" data-target="g2-intro" onclick="toggleSection('g2-intro')">Mostrar ▼</button>
+      <div class="simple-reveal-content" id="g2-intro">
+        <p>A escuta ativa e a inteligência relacional são fundamentais para uma boa comunicação. Ouvir com atenção, compreender o outro e responder com respeito fortalece a confiança, evita conflitos e melhora os relacionamentos.</p>
+        <p>Segundo Daniel Goleman, desenvolver a inteligência emocional e saber ouvir são habilidades essenciais para criar relações saudáveis e uma comunicação mais eficaz.</p>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h4>Desenvolvimento</h4>
+      <button type="button" class="simple-reveal-btn" data-target="g2-dev" onclick="toggleSection('g2-dev')">Mostrar ▼</button>
+      <div class="simple-reveal-content" id="g2-dev">
+        <p>A escuta ativa vai além de apenas ouvir: ela envolve prestar atenção, compreender e respeitar o que a outra pessoa está dizendo. Junto com a inteligência relacional, ela melhora a convivência, fortalece a confiança e ajuda a resolver conflitos por meio do diálogo.</p>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h4>Pratique — escuta ativa ou passiva?</h4>
+      <p style="color:var(--chalk-dim); font-size:14px; margin:0 0 4px;">Leia cada comportamento e classifique.</p>
+      ${praticaItems}
+      <div class="sbi-pratica-score" id="g2-pratica-score">Responda os 4 comportamentos acima para ver seu resultado.</div>
+    </div>
+
+    <div class="section-block">
+      <h4>Conclusão</h4>
+      <button type="button" class="simple-reveal-btn" data-target="g2-conclusao" onclick="toggleSection('g2-conclusao')">Mostrar ▼</button>
+      <div class="simple-reveal-content" id="g2-conclusao">
+        <p>Praticar a escuta ativa e desenvolver a inteligência relacional contribui para relações mais saudáveis e uma comunicação mais eficaz. Quando ouvimos com atenção e empatia, criamos um ambiente de respeito, compreensão e colaboração.</p>
+      </div>
+    </div>
+
+    <div class="section-block">
+      <h4>Questões</h4>
+      <p style="color:var(--chalk-dim); font-size:14px; margin:0 0 4px;">Escolha uma opção em cada pergunta.</p>
+      ${questoes}
+      <div class="quiz-score" id="g2q-score">Responda as 3 perguntas acima para ver seu resultado.</div>
+    </div>
+
+    <div class="section-block">
+      <h4>Autores e Fontes</h4>
+      <p><b>Autor citado:</b> Daniel Goleman — psicólogo e autor das obras sobre inteligência emocional.</p>
+      <p style="margin-top:10px;"><b>Referências:</b></p>
+      <p>GOLEMAN, Daniel. <i>Inteligência Emocional.</i> Objetiva, 1995.</p>
+      <p>GOLEMAN, Daniel. <i>Inteligência Social.</i> Elsevier, 2006.</p>
+    </div>
+  `;
+}
+
+function selectG2Option(sIdx, oIdx){
+  if(g2QuizAnswered[sIdx]) return;
+  g2QuizAnswered[sIdx] = true;
+
+  const scenario = document.getElementById('g2q-' + sIdx);
+  const opt = G2_QUESTOES[sIdx].options[oIdx];
+  const buttons = scenario.querySelectorAll('.quiz-opt');
+  buttons.forEach((btn,i) => {
+    btn.disabled = true;
+    if(i === oIdx) btn.classList.add(opt.correct ? 'correct-selected' : 'wrong-selected');
+  });
+
+  if(opt.correct) g2QuizScore++;
+
+  const fb = scenario.querySelector('.quiz-feedback');
+  fb.textContent = opt.feedback;
+  fb.classList.add('show', opt.correct ? 'ok' : 'bad');
+
+  const answeredCount = g2QuizAnswered.filter(Boolean).length;
+  const scoreEl = document.getElementById('g2q-score');
+  if(scoreEl){
+    if(answeredCount < G2_QUESTOES.length){
+      scoreEl.textContent = `Respostas corretas até agora: ${g2QuizScore} de ${answeredCount}.`;
+    } else {
+      scoreEl.textContent = `Resultado final: ${g2QuizScore} de ${G2_QUESTOES.length} respostas corretas.`;
+    }
+  }
+}
+
 const G4_DESC = [
   { letter:"D", title:"Descrever", color:"#8FAF7B",
     texto:"Explique a situação de forma objetiva, sem julgamentos.",
@@ -1081,6 +1274,14 @@ const G6_SITUACOES = [
       { letter:"b", text:"Peço um momento para a equipe discutir minha visão junto com as demais antes de decidir." },
       { letter:"c", text:"Falo depois, em particular, com o líder sobre minha discordância." },
       { letter:"d", text:"Fico quieto para não gerar atrito, mesmo discordando." }
+    ]},
+  { title:"Erro assumido por outra pessoa",
+    desc:"Você percebe um erro em um relatório, mas o responsável nega e diz que o erro foi seu, mesmo sabendo que não foi.",
+    options:[
+      { letter:"a", text:"Insisto na hora, mostrando provas do que aconteceu." },
+      { letter:"b", text:"Peço para conversarmos em particular depois." },
+      { letter:"c", text:"Levo o caso para o líder resolver." },
+      { letter:"d", text:"Deixo por isso mesmo, mesmo sabendo que não foi culpa minha." }
     ]}
 ];
 
@@ -1128,7 +1329,7 @@ function updateTermTotal(){
   totalEl.textContent = `Soma total: ${sum} / 30`;
   const band = G6_BANDS.find(b => sum >= b.min && sum <= b.max);
   if(band){
-    resultEl.querySelector('.r-title').textContent = `${band.emoji} ${band.min}–${band.max} — ${band.title}`;
+    resultEl.querySelector('.r-title').textContent = `${band.emoji} ${band.title}`;
     resultEl.querySelector('.r-text').textContent = band.text;
     resultEl.classList.add('show');
   }
@@ -1305,8 +1506,15 @@ function renderGrupo5Body(){
 
   return `
     <div class="section-block">
-      <h4>Ferramenta prática — Método SBI</h4>
-      <p style="color:var(--chalk-dim); font-size:14px; margin:0 0 4px;">Use o método SBI para dar feedback de forma clara, objetiva e respeitosa. Clique em cada letra para ver o que ela significa.</p>
+      <h4>Introdução</h4>
+      <p>A comunicação é essencial para construir relações saudáveis e alcançar bons resultados, tanto na vida pessoal quanto no ambiente profissional. Nesse contexto, o feedback e as conversas difíceis são ferramentas importantes para resolver conflitos, alinhar expectativas e promover o desenvolvimento por meio de um diálogo respeitoso, claro e objetivo.</p>
+    </div>
+
+    <div class="section-block">
+      <h4>Ferramenta Prática — Método SBI</h4>
+      <p>O Método SBI (Situação, Comportamento e Impacto) é uma técnica de feedback desenvolvida pelo Center for Creative Leadership (CCL), organização reconhecida mundialmente pelo desenvolvimento de líderes.</p>
+      <p>Seu objetivo é tornar o feedback mais claro, objetivo e construtivo, com foco nos fatos e não em julgamentos.</p>
+      <p style="color:var(--chalk-dim); font-size:14px; margin:14px 0 4px;">Como funciona? Clique em cada letra para ver o que ela significa.</p>
       <div class="sbi-grid">${componentCards}</div>
     </div>
 
@@ -1327,6 +1535,7 @@ function renderGrupo5Body(){
         </div>
       </div>
       <div class="sbi-tip"><span class="star">⭐</span><span><b>Dica:</b> Foque nos fatos, não na pessoa. O objetivo é melhorar juntos!</span></div>
+      <p style="margin-top:14px;">O método contribui para uma comunicação mais respeitosa e eficaz, reduz conflitos e fortalece o desenvolvimento pessoal e profissional.</p>
     </div>
 
     <div class="section-block">
@@ -1334,6 +1543,29 @@ function renderGrupo5Body(){
       <p style="color:var(--chalk-dim); font-size:14px; margin:0 0 4px;">Leia cada frase e clique na letra correspondente.</p>
       ${praticaItems}
       <div class="sbi-pratica-score" id="sbi-pratica-score">Responda as 3 frases acima para ver seu resultado.</div>
+    </div>
+
+    <div class="section-block">
+      <h4>Material de Apoio</h4>
+      <p style="color:var(--chalk-dim); font-size:14px; margin:0 0 4px;">Resumo do tema para consulta rápida.</p>
+      <table class="apoio-table">
+        <thead>
+          <tr>
+            <th>O que é?</th>
+            <th>Como reconhecer?</th>
+            <th>Como aplicar?</th>
+            <th>O que evitar?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="O que é?">Feedback é uma ferramenta de comunicação utilizada para promover o desenvolvimento pessoal e profissional. Consiste em compartilhar percepções sobre comportamentos, atitudes ou resultados de forma clara, respeitosa e objetiva, com o propósito de reconhecer acertos, corrigir falhas e fortalecer relacionamentos.</td>
+            <td data-label="Como reconhecer?">Uma conversa difícil surge quando há necessidade de abordar temas delicados, como conflitos, erros, mudanças ou expectativas não atendidas. Esses momentos exigem diálogo aberto, escuta ativa, empatia e equilíbrio emocional para que o foco permaneça na solução do problema, e não na pessoa.</td>
+            <td data-label="Como aplicar?">Antes da conversa, organize os fatos e defina o objetivo. Durante o diálogo, comunique-se com clareza, utilize exemplos concretos, mantenha uma postura respeitosa, pratique a escuta ativa e incentive a participação da outra pessoa. Ao final, estabeleça ações e compromissos para promover melhorias e fortalecer a confiança.</td>
+            <td data-label="O que evitar?">Dar feedback de forma genérica ou baseado só em críticas; atacar a pessoa em vez do comportamento; adiar a conversa por medo do conflito; falar sem deixar espaço para a outra pessoa se posicionar; encerrar sem combinar próximos passos.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   `;
 }
@@ -1502,7 +1734,7 @@ function router(){
     document.getElementById('g-title').textContent = g.title;
     document.getElementById('g-question').textContent = '“' + g.q + '”';
     document.getElementById('g-credits').innerHTML = g.custom ? renderCNVCredits() : '';
-    document.getElementById('g-body').innerHTML = g.custom ? renderCNVBody() : (g.custom1 ? renderGrupo1Body() : (g.custom4 ? renderGrupo4Body() : (g.custom5 ? renderGrupo5Body() : (g.custom6 ? renderGrupo6Body() : renderDefaultBody(g)))));
+    document.getElementById('g-body').innerHTML = g.custom ? renderCNVBody() : (g.custom1 ? renderGrupo1Body() : (g.custom2 ? renderGrupo2Body() : (g.custom4 ? renderGrupo4Body() : (g.custom5 ? renderGrupo5Body() : (g.custom6 ? renderGrupo6Body() : renderDefaultBody(g))))));
     document.getElementById('view-grupo').classList.add('active');
   } else {
     document.getElementById('view-cover').classList.add('active');
