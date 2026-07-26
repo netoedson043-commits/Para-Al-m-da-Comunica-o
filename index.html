@@ -625,6 +625,46 @@
     .section-block{ padding:16px 14px; }
     .term-btn{ width:16vw; height:16vw; }
   }
+
+  /* ---------- Introdução ---------- */
+  .intro-wrap{ max-width:760px; }
+  .intro-content{ margin-top:8px; }
+  .intro-content .page-title{ margin-bottom:26px; }
+  .intro-content p{
+    font-size:16px; color:var(--chalk-dim); line-height:1.8; margin:0 0 20px;
+  }
+  .intro-content .intro-welcome{
+    font-family:'Fraunces',serif; font-style:italic; font-size:22px;
+    color:var(--amber); margin:32px 0 28px;
+  }
+  .intro-content .intro-footnote{
+    font-size:13px; color:var(--chalk-dim); border-top:1px solid var(--line);
+    padding-top:20px; margin-top:8px; line-height:1.7;
+  }
+  .intro-content .intro-cta-line{
+    font-size:15px; color:var(--chalk); margin-top:24px; margin-bottom:22px;
+  }
+  .intro-progress{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.06em;
+    color:var(--chalk-dim); text-transform:uppercase; margin-bottom:22px;
+  }
+  .intro-controls{ display:flex; align-items:center; gap:18px; margin-top:6px; flex-wrap:wrap; }
+  .intro-skip-btn{
+    background:none; border:none; color:var(--chalk-dim); font-size:12.5px;
+    font-family:'IBM Plex Mono',monospace; letter-spacing:0.03em; cursor:pointer;
+    text-decoration:underline; text-underline-offset:3px; transition:color .2s ease;
+  }
+  .intro-skip-btn:hover{ color:var(--amber); }
+  .intro-final{ animation:fadeIn .4s ease; }
+  @keyframes fadeIn{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:translateY(0); } }
+  .intro-step{ animation:fadeIn .4s ease; }
+  @media (max-width:680px){
+    .intro-controls{ gap:14px; }
+  }
+  @media (max-width:680px){
+    .intro-content p{ font-size:14.5px; line-height:1.75; }
+    .intro-content .intro-welcome{ font-size:19px; margin:26px 0 22px; }
+  }
 </style>
 </head>
 <body class="dust">
@@ -640,7 +680,47 @@
     <p class="cover-sub">Guia Prático de Ferramentas da Comunicação</p>
     <p class="cover-credit">Instrutora Cássia Ribeiro</p>
     <p class="cover-turma">Turma 202639853 · ITACITRUS</p>
-    <button class="cta" onclick="location.hash='#grupos'">Ver os grupos →</button>
+    <button class="cta" onclick="location.hash='#intro'">Ver os grupos →</button>
+  </div>
+</section>
+
+<!-- ===================== INTRODUÇÃO ===================== -->
+<section id="view-intro" class="view">
+  <div class="wrap intro-wrap">
+    <button class="back-link" onclick="location.hash=''">← Capa</button>
+    <div class="intro-content">
+      <h2 class="page-title fraunces">Muito Além da Comunicação</h2>
+
+      <div class="intro-progress" id="intro-progress">1 de 7</div>
+
+      <div class="intro-steps" id="intro-steps">
+        <p class="intro-step" data-step="0">Imagine o primeiro dia em um novo trabalho. O coração acelerado, a cabeça cheia de perguntas: “Será que vou dar conta? E se eu falar algo errado? E se eu não souber fazer as coisas?”</p>
+
+        <p class="intro-step" data-step="1" style="display:none;">Logo nas primeiras orientações se percebe que o verdadeiro desafio nunca está nas tarefas, está na comunicação.</p>
+
+        <p class="intro-step" data-step="2" style="display:none;">Uma tarefa explicada às pressas gera um retrabalho que ninguém queria. Um prazo combinado de um jeito é entendido de outro. Um colega interpreta mal uma mensagem e a resposta chega mais dura do que deveria. Alguém se sente ignorado numa reunião. Outro acredita que já sabe tudo, sem perceber o quanto ainda tem a aprender.</p>
+
+        <p class="intro-step" data-step="3" style="display:none;">Depois de um tempo se compreende que comunicar bem não é só falar. É entender como nossa mente cria interpretações próprias. É perceber o que existe por trás das palavras. É discordar sem ferir, defender uma ideia sem desrespeitar, transformar conflito em aprendizado. É saber dar e receber feedback — e, às vezes, ter a coragem de mudar de opinião.</p>
+
+        <p class="intro-step" data-step="4" style="display:none;">Comunicar bem é construir relações, criar confiança, transformar ambientes. E tudo é um processo de lapidação do ser, através do autoconhecimento, estudo e ajustes intencionais.</p>
+
+        <p class="intro-step" data-step="5" style="display:none;">Este é o resultado de um fórum realizado por uma turma que decidiu ir além da fala e estudar as ferramentas por trás de uma boa comunicação. O que ficou desse encontro é este Guia Prático de Ferramentas da Comunicação — aberto a qualquer pessoa que queira reconhecer vieses, escutar de verdade, falar com clareza e firmeza, dar feedback que constrói e transformar diferenças em construção conjunta.</p>
+
+        <p class="intro-step" data-step="6" style="display:none;">Porque comunicação não é apenas uma habilidade profissional — é uma forma de transformar como trabalhamos, convivemos e crescemos.</p>
+      </div>
+
+      <div class="intro-controls" id="intro-controls">
+        <button type="button" class="simple-reveal-btn" id="intro-next-btn" onclick="introNext()">Continuar →</button>
+        <button type="button" class="intro-skip-btn" id="intro-skip-btn" onclick="introSkipAll()">Pular tudo ▸</button>
+      </div>
+
+      <div class="intro-final" id="intro-final" style="display:none;">
+        <p class="intro-welcome">Sejam bem-vindos.</p>
+        <p class="intro-footnote">Este projeto nasceu de um fórum realizado pela turma do Programa Jovem Aprendiz — SENAR/BA, sob orientação da Instrutora Cássia Ribeiro.</p>
+        <p class="intro-cta-line">Veja agora as ferramentas que a turma construiu para você.</p>
+        <button class="cta" onclick="location.hash='#grupos'">Ver os grupos →</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -648,7 +728,7 @@
 <section id="view-grupos" class="view">
   <div class="wrap">
     <div class="page-head">
-      <button class="back-link" onclick="location.hash=''">← Capa</button>
+      <button class="back-link" onclick="location.hash='#intro'">← Introdução</button>
       <h2 class="page-title">Escolha um grupo</h2>
       <p class="page-desc">Cada grupo estuda uma ferramenta de comunicação profissional e apresenta para a turma. Clique em um grupo para ver os detalhes da apresentação.</p>
     </div>
@@ -1717,12 +1797,51 @@ function selectQuizOption(sIdx, oIdx){
   }
 }
 
+const INTRO_TOTAL_STEPS = 7;
+let introStep = 0;
+
+function introShowStep(idx){
+  document.querySelectorAll('.intro-step').forEach(el => {
+    el.style.display = parseInt(el.dataset.step,10) <= idx ? 'block' : 'none';
+  });
+  const progressEl = document.getElementById('intro-progress');
+  if(progressEl) progressEl.textContent = `${Math.min(idx+1, INTRO_TOTAL_STEPS)} de ${INTRO_TOTAL_STEPS}`;
+
+  const controlsEl = document.getElementById('intro-controls');
+  const finalEl = document.getElementById('intro-final');
+  if(idx >= INTRO_TOTAL_STEPS - 1){
+    if(controlsEl) controlsEl.style.display = 'none';
+    if(finalEl) finalEl.style.display = 'block';
+  } else {
+    if(controlsEl) controlsEl.style.display = 'flex';
+    if(finalEl) finalEl.style.display = 'none';
+  }
+}
+
+function introNext(){
+  introStep++;
+  introShowStep(introStep);
+}
+
+function introSkipAll(){
+  introStep = INTRO_TOTAL_STEPS - 1;
+  introShowStep(introStep);
+}
+
+function resetIntro(){
+  introStep = 0;
+  introShowStep(0);
+}
+
 function router(){
   const hash = location.hash || '#';
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
 
   if(hash === '#' || hash === ''){
     document.getElementById('view-cover').classList.add('active');
+  } else if(hash === '#intro'){
+    resetIntro();
+    document.getElementById('view-intro').classList.add('active');
   } else if(hash === '#grupos'){
     renderGrid();
     document.getElementById('view-grupos').classList.add('active');
