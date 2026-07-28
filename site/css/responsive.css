@@ -1,0 +1,77 @@
+  /* ===================== ADAPTAÇÃO RESPONSIVA ===================== */
+  @media (max-width:680px){
+    .wrap{ padding:36px 16px 70px; }
+    .cover-view{ padding:32px 16px; }
+    .cover-title{ margin-bottom:14px; }
+    .cover-sub{ font-size:15px; }
+    .cta{ width:100%; justify-content:center; padding:14px 20px; }
+
+    .page-head{ margin-bottom:28px; }
+    .grid{ grid-template-columns:1fr; gap:14px; }
+    .card{ padding:22px 20px 20px; min-height:auto; }
+    .card .ghost-num{ font-size:56px; }
+    .card h3{ font-size:19px; }
+
+    .group-eyebrow{ gap:10px; margin-bottom:12px; }
+    .group-title{ margin-bottom:16px; }
+    .guiding-q{ font-size:16px; }
+    .credits{ font-size:11px; gap:6px 18px; margin:16px 0 4px; }
+
+    .section-block{ padding:20px 16px; margin-top:20px; border-radius:4px 12px; }
+    .section-block h4{ font-size:18px; margin-bottom:14px; }
+    .section-block h5{ font-size:15px; }
+
+    .img-pair figure{ height:auto; min-height:0; padding:14px; }
+    .img-pair img{ height:auto; max-height:340px; }
+
+    .compare-grid{ grid-template-columns:1fr; gap:12px; }
+
+    .checklist li{ gap:12px; padding:14px 0; }
+    .checklist .body b{ font-size:14px; }
+    .tag{ font-size:9.5px; padding:2px 7px; }
+
+    .comp-grid{ grid-template-columns:1fr; }
+    .comp-card, .bias-card, .qa-card, .sbi-card, .sit-scenario, .quiz-scenario,
+    .term-result, .profile-result, .sbi-example-box, .sbi-tip, .sbi-pratica-item,
+    .desc-card, .dica-card{
+      padding-left:16px; padding-right:16px;
+    }
+
+    .quiz-scenario, .sit-scenario{ padding:18px 16px; }
+    .quiz-opt, .sit-opt, .sbi-opt-btn{ padding:11px 14px; font-size:13.3px; }
+
+    .simple-reveal-btn{ width:100%; justify-content:center; padding:12px 18px; }
+
+    .bias-top h6{ font-size:15.5px; }
+    .bias-card{ padding:16px 16px; }
+
+    .dinamica-imgs{ gap:14px; }
+    .dinamica-imgs figure{ flex:1 1 140px; max-width:100%; padding:12px; }
+
+    .term-item{ gap:10px; padding:13px 0; }
+    .term-text{ flex-basis:100%; font-size:13.5px; }
+    .term-scale{ width:100%; justify-content:space-between; }
+    .term-btn{ width:15vw; max-width:38px; height:15vw; max-height:38px; font-size:12.5px; }
+
+    .sbi-grid{ grid-template-columns:1fr; }
+    .sbi-example-flow{ gap:12px; }
+
+    .desc-grid{ grid-template-columns:1fr; }
+
+    .apoio-table th, .apoio-table td{ font-size:12.5px; }
+
+    footer.foot{ padding:26px 16px 36px; font-size:10.5px; }
+  }
+
+  @media (max-width:400px){
+    .cover-title{ font-size:34px; }
+    .group-title{ font-size:26px; }
+    .page-title{ font-size:24px; }
+    .section-block{ padding:16px 14px; }
+    .term-btn{ width:16vw; height:16vw; }
+  }
+
+  @media (max-width:560px){
+    .img-pair{ flex-direction:column; }
+    .section-block{ padding:22px 18px; }
+  }

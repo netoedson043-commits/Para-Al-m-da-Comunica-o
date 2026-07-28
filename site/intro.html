@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introdução · Fórum Para Além da Comunicação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Work+Sans:wght@400;500;600&family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/intro.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="dust">
+
+<!-- ===================== INTRODUÇÃO ===================== -->
+<section class="page-view">
+  <div class="wrap intro-wrap">
+    <a class="back-link" href="index.html">← Capa</a>
+    <div class="intro-content">
+      <h2 class="page-title fraunces">Muito Além da Comunicação</h2>
+
+      <div class="intro-progress" id="intro-progress">1 de 7</div>
+
+      <div class="intro-steps" id="intro-steps">
+        <p class="intro-step" data-step="0">Imagine o primeiro dia em um novo trabalho. O coração acelerado, a cabeça cheia de perguntas: “Será que vou dar conta? E se eu falar algo errado? E se eu não souber fazer as coisas?”</p>
+
+        <p class="intro-step" data-step="1" style="display:none;">Logo nas primeiras orientações se percebe que o verdadeiro desafio nunca está nas tarefas, está na comunicação.</p>
+
+        <p class="intro-step" data-step="2" style="display:none;">Uma tarefa explicada às pressas gera um retrabalho que ninguém queria. Um prazo combinado de um jeito é entendido de outro. Um colega interpreta mal uma mensagem e a resposta chega mais dura do que deveria. Alguém se sente ignorado numa reunião. Outro acredita que já sabe tudo, sem perceber o quanto ainda tem a aprender.</p>
+
+        <p class="intro-step" data-step="3" style="display:none;">Depois de um tempo se compreende que comunicar bem não é só falar. É entender como nossa mente cria interpretações próprias. É perceber o que existe por trás das palavras. É discordar sem ferir, defender uma ideia sem desrespeitar, transformar conflito em aprendizado. É saber dar e receber feedback — e, às vezes, ter a coragem de mudar de opinião.</p>
+
+        <p class="intro-step" data-step="4" style="display:none;">Comunicar bem é construir relações, criar confiança, transformar ambientes. E tudo é um processo de lapidação do ser, através do autoconhecimento, estudo e ajustes intencionais.</p>
+
+        <p class="intro-step" data-step="5" style="display:none;">Este é o resultado de um fórum realizado por uma turma que decidiu ir além da fala e estudar as ferramentas por trás de uma boa comunicação. O que ficou desse encontro é este Guia Prático de Ferramentas da Comunicação — aberto a qualquer pessoa que queira reconhecer vieses, escutar de verdade, falar com clareza e firmeza, dar feedback que constrói e transformar diferenças em construção conjunta.</p>
+
+        <p class="intro-step" data-step="6" style="display:none;">Porque comunicação não é apenas uma habilidade profissional — é uma forma de transformar como trabalhamos, convivemos e crescemos.</p>
+      </div>
+
+      <div class="intro-controls" id="intro-controls">
+        <button type="button" class="simple-reveal-btn" id="intro-next-btn" onclick="introNext()">Continuar →</button>
+        <button type="button" class="intro-skip-btn" id="intro-skip-btn" onclick="introSkipAll()">Pular tudo ▸</button>
+      </div>
+
+      <div class="intro-final" id="intro-final" style="display:none;">
+        <p class="intro-welcome">Sejam bem-vindos.</p>
+        <img class="intro-team-photo" src="assets/images/team-photo.jpg" alt="Turma do Programa Jovem Aprendiz SENAR/BA">
+        <p class="intro-footnote">Este projeto nasceu de um fórum realizado pela turma do Programa Jovem Aprendiz — SENAR/BA, sob orientação da Instrutora Cássia Ribeiro.</p>
+        <p class="intro-cta-line">Veja agora as ferramentas que a turma construiu para você.</p>
+        <a class="cta" href="grupos.html">Ver os grupos →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="js/intro.js"></script>
+<script>window.addEventListener('DOMContentLoaded', resetIntro);</script>
+<footer class="foot">Fórum “Para Além da Comunicação” · Comunicação no Meio Corporativo</footer>
+</body>
+</html>

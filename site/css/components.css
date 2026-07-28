@@ -1,0 +1,330 @@
+  /* ---------- compare cards ---------- */
+  .compare-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; }
+  .compare-card{ border-radius:4px 16px; padding:22px 22px; border:1px solid var(--line); }
+  .compare-card.bad{ background:rgba(196,100,91,0.08); border-color:rgba(196,100,91,0.3); }
+  .compare-card.good{ background:rgba(127,176,199,0.08); border-color:rgba(127,176,199,0.3); }
+  .compare-card .tag-label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em;
+    text-transform:uppercase; margin-bottom:8px; display:block;
+  }
+  .compare-card.bad .tag-label{ color:#D98079; }
+  .compare-card.good .tag-label{ color:var(--blue); }
+  .compare-card h5{ margin:0 0 10px !important; font-size:17px; }
+  .compare-card p{ margin:0; font-size:14px; color:var(--chalk-dim); line-height:1.65; }
+
+  /* ---------- component accordion cards ---------- */
+  .comp-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin-top:6px; }
+  .comp-card{
+    background:var(--board); border:1px solid var(--line); border-radius:4px 14px;
+    padding:18px 20px; cursor:pointer; transition:border-color .2s ease;
+  }
+  .comp-card:hover{ border-color:rgba(232,184,75,0.45); }
+  .comp-card-top{ display:flex; align-items:center; justify-content:space-between; }
+  .comp-card .comp-num{ font-family:'IBM Plex Mono',monospace; color:var(--amber); font-size:12px; }
+  .comp-card .chevron{ color:var(--chalk-dim); transition:transform .25s ease; font-size:13px; }
+  .comp-card.open .chevron{ transform:rotate(180deg); }
+  .comp-card h6{ font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:8px 0 0; }
+  .comp-detail{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
+  .comp-card.open .comp-detail{ max-height:220px; margin-top:10px; }
+  .comp-detail p{ margin:0; font-size:13.5px; color:var(--chalk-dim); line-height:1.6; }
+  .comp-detail em{ color:var(--chalk); font-style:italic; }
+
+  /* ---------- evitar list ---------- */
+  .evitar-list{ display:flex; flex-direction:column; gap:10px; margin-top:6px; }
+  .evitar-item{
+    display:flex; gap:14px; align-items:flex-start;
+    padding:13px 16px; background:rgba(196,100,91,0.06);
+    border:1px solid rgba(196,100,91,0.22); border-radius:3px 12px;
+  }
+  .evitar-item .x{ font-family:'IBM Plex Mono',monospace; color:#D98079; font-weight:500; font-size:13px; padding-top:1px; }
+  .evitar-item b{ display:block; font-size:14.5px; margin-bottom:2px; }
+  .evitar-item em{ color:var(--chalk-dim); font-style:italic; font-size:13.5px; }
+
+  /* ---------- quiz ---------- */
+  .quiz-scenario{
+    background:var(--board); border:1px solid var(--line); border-radius:4px 14px;
+    padding:22px 24px; margin-top:16px;
+  }
+  .quiz-scenario:first-of-type{ margin-top:6px; }
+  .scenario-label{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--amber);
+    letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px;
+  }
+  .quiz-scenario .situation{ font-size:15px; color:var(--chalk); margin:0 0 16px; line-height:1.55; }
+  .quiz-options{ display:flex; flex-direction:column; gap:10px; }
+  .quiz-opt{
+    text-align:left; background:var(--board-2); border:1px solid var(--line);
+    border-radius:3px 10px; padding:12px 16px; cursor:pointer; color:var(--chalk);
+    font-size:13.8px; font-family:'Work Sans',sans-serif; transition:border-color .15s ease, background .15s ease;
+    line-height:1.5;
+  }
+  .quiz-opt:hover:not(:disabled){ border-color:rgba(232,184,75,0.5); }
+  .quiz-opt.correct-selected{ background:rgba(127,176,199,0.12); border-color:var(--blue); }
+  .quiz-opt.wrong-selected{ background:rgba(196,100,91,0.12); border-color:#D98079; }
+  .quiz-opt:disabled{ cursor:default; }
+  .quiz-feedback{
+    display:none; margin-top:12px; font-size:13.5px; line-height:1.6;
+    padding:12px 15px; border-radius:3px 10px;
+  }
+  .quiz-feedback.show{ display:block; }
+  .quiz-feedback.ok{ background:rgba(127,176,199,0.1); border:1px solid rgba(127,176,199,0.3); }
+  .quiz-feedback.bad{ background:rgba(196,100,91,0.1); border:1px solid rgba(196,100,91,0.3); }
+  .quiz-score{
+    text-align:center; font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    color:var(--chalk-dim); margin-top:20px; padding-top:16px; border-top:1px solid var(--line);
+  }
+
+  /* ---------- Grupo 1 — reveal buttons ---------- */
+  .simple-reveal-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:transparent; border:1.5px dashed rgba(243,239,227,0.55); color:var(--chalk);
+    border-radius:3px 14px 3px 14px; padding:11px 22px; font-size:13.5px; letter-spacing:0.02em;
+    cursor:pointer; transition:all .25s ease; font-family:'Work Sans',sans-serif;
+  }
+  .simple-reveal-btn:hover{ background:rgba(232,184,75,0.1); border-color:var(--amber); color:var(--amber); }
+  .simple-reveal-content{ max-height:0; overflow:hidden; transition:max-height .45s ease; }
+  .simple-reveal-content.open{ max-height:3000px; margin-top:20px; }
+  .simple-reveal-content p{ margin:0 0 12px; font-size:14.5px; color:var(--chalk-dim); line-height:1.7; }
+  .simple-reveal-content p:last-child{ margin-bottom:0; }
+  .simple-reveal-content strong{ color:var(--chalk); }
+
+  /* ---------- Grupo 1 — perguntas interativas ---------- */
+  .qa-list{ display:flex; flex-direction:column; gap:10px; }
+  .qa-card{
+    background:var(--board); border:1px solid var(--line); border-radius:4px 14px;
+    padding:16px 20px; cursor:pointer; transition:border-color .2s ease;
+  }
+  .qa-card:hover{ border-color:rgba(232,184,75,0.45); }
+  .qa-top{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
+  .qa-top span.q-text{ font-size:14.5px; color:var(--chalk); line-height:1.5; }
+  .qa-top .chevron{ color:var(--chalk-dim); transition:transform .25s ease; font-size:13px; flex-shrink:0; }
+  .qa-card.open .chevron{ transform:rotate(180deg); }
+  .qa-detail{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
+  .qa-card.open .qa-detail{ max-height:220px; margin-top:12px; padding-top:12px; border-top:1px dashed var(--line); }
+  .qa-detail p{ margin:0; font-size:13.5px; color:var(--amber); line-height:1.6; }
+
+  /* ---------- Grupo 1 — vieses cognitivos ---------- */
+  .bias-list{ display:flex; flex-direction:column; gap:12px; }
+  .bias-card{
+    background:var(--board); border:1px solid var(--line); border-radius:4px 14px;
+    padding:18px 22px; cursor:pointer; transition:border-color .2s ease;
+  }
+  .bias-card:hover{ border-color:rgba(232,184,75,0.45); }
+  .bias-top{ display:flex; align-items:center; justify-content:space-between; gap:14px; }
+  .bias-top h6{ font-family:'Fraunces',serif; font-size:16.5px; font-weight:600; margin:0; }
+  .bias-top .chevron{ color:var(--chalk-dim); transition:transform .25s ease; font-size:13px; flex-shrink:0; }
+  .bias-card.open .chevron{ transform:rotate(180deg); }
+  .bias-detail{ max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .bias-card.open .bias-detail{ max-height:500px; margin-top:14px; }
+  .bias-detail p{ margin:0 0 10px; font-size:13.5px; color:var(--chalk-dim); line-height:1.65; }
+  .bias-detail p:last-child{ margin-bottom:0; }
+  .bias-detail b{ color:var(--chalk); }
+  .bias-detail .autor{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--amber);
+    letter-spacing:0.03em; margin-top:10px;
+  }
+
+  /* ---------- Grupo 1 — dinâmica das imagens ---------- */
+  .dinamica-imgs{ display:flex; gap:22px; flex-wrap:wrap; margin-top:6px; }
+  .dinamica-imgs figure{
+    margin:0; flex:1 1 200px; max-width:260px; background:#EAE3D0; border:1px solid var(--line);
+    border-radius:3px 12px; padding:16px; text-align:center;
+    box-shadow:0 10px 24px rgba(0,0,0,0.22);
+  }
+  .dinamica-imgs img{ width:100%; height:auto; display:block; border-radius:2px; }
+
+  /* ---------- Grupo 6 — termômetro do conflito ---------- */
+  .term-item{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:15px 0; border-top:1px solid var(--line); flex-wrap:wrap;
+  }
+  .term-item:first-child{ border-top:none; }
+  .term-text{ flex:1 1 320px; font-size:14px; color:var(--chalk); line-height:1.5; }
+  .term-scale{ display:flex; gap:6px; flex-shrink:0; }
+  .term-btn{
+    width:34px; height:34px; border-radius:50%; border:1px solid var(--line);
+    background:var(--board-2); color:var(--chalk-dim); cursor:pointer;
+    font-family:'IBM Plex Mono',monospace; font-size:13px; transition:all .15s ease;
+  }
+  .term-btn:hover{ border-color:rgba(232,184,75,0.6); color:var(--chalk); }
+  .term-btn.selected{ background:var(--amber); color:var(--board); border-color:var(--amber); font-weight:600; }
+  .term-total{
+    text-align:center; font-family:'IBM Plex Mono',monospace; font-size:13px;
+    color:var(--chalk-dim); margin-top:22px; padding-top:18px; border-top:1px dashed var(--line);
+  }
+  .term-result{
+    display:none; margin-top:16px; padding:18px 22px; border-radius:4px 16px;
+    background:var(--board); border:1px solid var(--line);
+  }
+  .term-result.show{ display:block; }
+  .term-result .r-title{ font-family:'Fraunces',serif; font-size:16px; font-weight:600; color:var(--amber); margin:0 0 8px; }
+  .term-result p{ margin:0; font-size:13.5px; color:var(--chalk-dim); line-height:1.65; }
+
+  /* ---------- Grupo 6 — situações / perfil de conflito ---------- */
+  .sit-scenario{
+    background:var(--board); border:1px solid var(--line); border-radius:4px 14px;
+    padding:22px 24px; margin-top:16px;
+  }
+  .sit-scenario:first-of-type{ margin-top:6px; }
+  .sit-title{ font-family:'Fraunces',serif; font-size:16px; font-weight:600; margin:0 0 6px; }
+  .sit-desc{ font-size:14px; color:var(--chalk-dim); margin:0 0 16px; line-height:1.55; }
+  .sit-options{ display:flex; flex-direction:column; gap:10px; }
+  .sit-opt{
+    text-align:left; background:var(--board-2); border:1px solid var(--line);
+    border-radius:3px 10px; padding:12px 16px; cursor:pointer; color:var(--chalk);
+    font-size:13.8px; font-family:'Work Sans',sans-serif; transition:border-color .15s ease, background .15s ease;
+    line-height:1.5;
+  }
+  .sit-opt:hover{ border-color:rgba(232,184,75,0.5); }
+  .sit-opt.selected{ background:rgba(127,176,199,0.12); border-color:var(--blue); }
+  .profile-result{
+    display:none; margin-top:26px; padding:26px 28px; border-radius:4px 18px;
+    background:var(--board); border:1px solid var(--line); text-align:center;
+  }
+  .profile-result.show{ display:block; }
+  .profile-emoji{ font-size:30px; line-height:1; }
+  .profile-title{ font-family:'Fraunces',serif; font-size:21px; font-weight:600; margin:10px 0 4px; }
+  .profile-counts{
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--chalk-dim);
+    letter-spacing:0.04em; margin-bottom:16px;
+  }
+  .profile-detail{ max-width:520px; margin:0 auto; text-align:left; }
+  .profile-detail p{ margin:0 0 8px; font-size:13.5px; color:var(--chalk-dim); line-height:1.6; }
+  .profile-detail p:last-child{ margin-bottom:0; }
+  .profile-detail b{ color:var(--chalk); }
+
+  /* ---------- Grupo 5 — método SBI ---------- */
+  .sbi-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin-top:10px; }
+  .sbi-card{
+    background:var(--board); border:1px solid var(--line); border-radius:4px 14px;
+    padding:18px 20px; cursor:pointer; transition:border-color .2s ease;
+  }
+  .sbi-card:hover{ border-color:rgba(232,184,75,0.45); }
+  .sbi-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .sbi-top-left{ display:flex; align-items:center; gap:12px; }
+  .sbi-badge{
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    width:36px; height:36px; border-radius:50%; font-family:'IBM Plex Mono',monospace;
+    font-weight:600; font-size:16px; color:var(--board);
+  }
+  .sbi-top h6{ font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:0; }
+  .sbi-top .chevron{ color:var(--chalk-dim); transition:transform .25s ease; font-size:13px; }
+  .sbi-card.open .chevron{ transform:rotate(180deg); }
+  .sbi-q{ font-size:13px; color:var(--chalk-dim); margin:8px 0 0 48px; }
+  .sbi-detail{ max-height:0; overflow:hidden; transition:max-height .3s ease; margin-left:48px; }
+  .sbi-card.open .sbi-detail{ max-height:220px; margin-top:10px; }
+  .sbi-detail p{ margin:0; font-size:13.5px; color:var(--chalk-dim); line-height:1.65; }
+
+  .sbi-example-flow{ display:flex; gap:16px; flex-wrap:wrap; margin-top:18px; }
+  .sbi-example-box{
+    flex:1 1 220px; background:var(--board); border:1px solid var(--line);
+    border-radius:4px 14px; padding:18px 20px;
+  }
+  .sbi-example-label{ font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px; }
+  .sbi-example-box p{ margin:0; font-size:14px; color:var(--chalk); line-height:1.5; }
+
+  .sbi-tip{
+    margin-top:18px; display:flex; align-items:center; gap:12px;
+    border:1px solid var(--line); border-radius:4px 14px; padding:14px 20px;
+    background:var(--board); font-size:13.5px; color:var(--chalk-dim); line-height:1.6;
+  }
+  .sbi-tip .star{ font-size:16px; flex-shrink:0; }
+  .sbi-tip b{ color:var(--chalk); }
+
+  .sbi-pratica-item{
+    background:var(--board); border:1px solid var(--line); border-radius:4px 14px;
+    padding:16px 20px; margin-top:12px;
+  }
+  .sbi-pratica-item:first-of-type{ margin-top:6px; }
+  .sbi-pratica-item p{ margin:0 0 12px; font-size:14px; color:var(--chalk); line-height:1.5; }
+  .sbi-pratica-opts{ display:flex; gap:10px; flex-wrap:wrap; }
+  .sbi-opt-btn{
+    display:flex; align-items:center; gap:8px; background:var(--board-2); border:1px solid var(--line);
+    border-radius:3px 10px; padding:9px 16px; cursor:pointer; color:var(--chalk);
+    font-size:13.5px; font-family:'Work Sans',sans-serif; transition:border-color .15s ease, background .15s ease;
+  }
+  .sbi-opt-btn:hover:not(:disabled){ border-color:rgba(232,184,75,0.5); }
+  .sbi-opt-btn.correct-selected{ background:rgba(127,176,199,0.12); border-color:var(--blue); }
+  .sbi-opt-btn.wrong-selected{ background:rgba(196,100,91,0.12); border-color:#D98079; }
+  .sbi-opt-btn:disabled{ cursor:default; }
+  .sbi-pratica-feedback{ display:none; margin-top:10px; font-size:13px; line-height:1.55; padding:10px 14px; border-radius:3px 10px; }
+  .sbi-pratica-feedback.show{ display:block; }
+  .sbi-pratica-feedback.ok{ background:rgba(127,176,199,0.1); border:1px solid rgba(127,176,199,0.3); color:var(--chalk-dim); }
+  .sbi-pratica-feedback.bad{ background:rgba(196,100,91,0.1); border:1px solid rgba(196,100,91,0.3); color:var(--chalk-dim); }
+  .sbi-pratica-score{
+    text-align:center; font-family:'IBM Plex Mono',monospace; font-size:12.5px;
+    color:var(--chalk-dim); margin-top:16px; padding-top:14px; border-top:1px solid var(--line);
+  }
+
+  /* ---------- Material de Apoio (tabela-resumo) ---------- */
+  .apoio-table{
+    width:100%; border-collapse:collapse; margin-top:10px;
+    border:1px solid var(--line); border-radius:4px; overflow:hidden;
+  }
+  .apoio-table th{
+    background:var(--board); color:var(--amber); text-align:left; font-size:11.5px;
+    letter-spacing:0.05em; text-transform:uppercase; font-family:'IBM Plex Mono',monospace;
+    padding:12px 16px; border-bottom:1px solid var(--line); border-right:1px solid var(--line);
+  }
+  .apoio-table th:last-child{ border-right:none; }
+  .apoio-table td{
+    background:var(--board-2); vertical-align:top; font-size:13.5px; color:var(--chalk-dim);
+    line-height:1.6; padding:14px 16px; border-right:1px solid var(--line); border-top:1px solid var(--line);
+  }
+  .apoio-table td:last-child{ border-right:none; }
+
+  /* ---------- Grupo 4 — método DESC ---------- */
+  .desc-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:10px; }
+  .desc-card{
+    background:var(--board); border:1px solid var(--line); border-radius:4px 14px;
+    padding:18px 20px; cursor:pointer; transition:border-color .2s ease;
+  }
+  .desc-card:hover{ border-color:rgba(232,184,75,0.45); }
+  .desc-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .desc-top-left{ display:flex; align-items:center; gap:12px; }
+  .desc-badge{
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    width:36px; height:36px; border-radius:50%; font-family:'IBM Plex Mono',monospace;
+    font-weight:600; font-size:16px; color:var(--board);
+  }
+  .desc-top h6{ font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:0; }
+  .desc-top .chevron{ color:var(--chalk-dim); transition:transform .25s ease; font-size:13px; }
+  .desc-card.open .chevron{ transform:rotate(180deg); }
+  .desc-detail{ max-height:0; overflow:hidden; transition:max-height .35s ease; margin-left:48px; }
+  .desc-card.open .desc-detail{ max-height:260px; margin-top:10px; }
+  .desc-detail p{ margin:0 0 8px; font-size:13.5px; color:var(--chalk-dim); line-height:1.6; }
+  .desc-detail p:last-child{ margin-bottom:0; }
+  .desc-detail .exemplo{ color:var(--chalk); font-style:italic; }
+
+  /* ---------- Grupo 4 — dicas práticas ---------- */
+  .dica-list{ display:flex; flex-direction:column; gap:10px; }
+  .dica-card{
+    background:var(--board); border:1px solid var(--line); border-radius:4px 14px;
+    padding:16px 20px; cursor:pointer; transition:border-color .2s ease;
+  }
+  .dica-card:hover{ border-color:rgba(232,184,75,0.45); }
+  .dica-top{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .dica-top-left{ display:flex; align-items:center; gap:12px; }
+  .dica-num{
+    font-family:'IBM Plex Mono',monospace; color:var(--amber); font-size:13px;
+    min-width:22px; flex-shrink:0;
+  }
+  .dica-top h6{ font-family:'Fraunces',serif; font-size:15.5px; font-weight:600; margin:0; }
+  .dica-top .chevron{ color:var(--chalk-dim); transition:transform .25s ease; font-size:13px; flex-shrink:0; }
+  .dica-card.open .chevron{ transform:rotate(180deg); }
+  .dica-detail{ max-height:0; overflow:hidden; transition:max-height .35s ease; margin-left:34px; }
+  .dica-card.open .dica-detail{ max-height:260px; margin-top:10px; }
+  .dica-detail ul{ margin:0; padding-left:18px; color:var(--chalk-dim); font-size:13.5px; line-height:1.75; }
+  .dica-detail li{ margin-bottom:4px; }
+  .dica-detail li:last-child{ margin-bottom:0; }
+
+  @media (max-width:760px){
+    .apoio-table, .apoio-table thead, .apoio-table tbody, .apoio-table th, .apoio-table td, .apoio-table tr{ display:block; }
+    .apoio-table thead{ display:none; }
+    .apoio-table td{ border:none; border-bottom:1px solid var(--line); padding:10px 4px; }
+    .apoio-table td::before{
+      content: attr(data-label); display:block; font-family:'IBM Plex Mono',monospace;
+      font-size:10.5px; letter-spacing:0.05em; text-transform:uppercase; color:var(--amber); margin-bottom:4px;
+    }
+    .apoio-table tr{ margin-bottom:8px; }
+  }

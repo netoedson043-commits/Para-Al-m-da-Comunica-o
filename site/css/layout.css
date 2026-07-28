@@ -1,0 +1,40 @@
+  /* ---------- GROUPS GRID ---------- */
+  .wrap{ max-width:1080px; margin:0 auto; padding:56px 24px 100px; }
+  .page-head{ margin-bottom:40px; }
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px; text-decoration:none;
+    color:var(--chalk-dim); font-family:'IBM Plex Mono',monospace; font-size:12px;
+    letter-spacing:0.06em; text-transform:uppercase; margin-bottom:22px; cursor:pointer;
+    border:none; background:none; padding:0;
+  }
+  .back-link:hover{ color:var(--amber); }
+  .page-title{ font-size:clamp(28px,4.5vw,42px); font-weight:600; margin:0 0 10px; }
+  .page-desc{ color:var(--chalk-dim); max-width:640px; line-height:1.6; margin:0; }
+
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:18px;
+  }
+  .card{
+    position:relative; overflow:hidden;
+    background:var(--board-2);
+    border:1px solid var(--line);
+    border-radius:4px 18px 4px 18px;
+    padding:26px 24px 24px;
+    cursor:pointer; text-align:left;
+    transition:transform .22s ease, border-color .22s ease, background .22s ease;
+    display:flex; flex-direction:column; min-height:210px;
+    text-decoration:none; color:inherit;
+  }
+  .card:hover{ transform:translateY(-4px); border-color:rgba(232,184,75,0.5); background:var(--board-3); }
+  .card .ghost-num{
+    position:absolute; right:10px; top:-6px;
+    font-family:'IBM Plex Mono',monospace; font-size:74px; font-weight:500;
+    color:rgba(243,239,227,0.05); line-height:1; user-select:none;
+  }
+  .card .num{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--amber);
+    letter-spacing:0.14em; margin-bottom:10px;
+  }
+  .card h3{ font-family:'Fraunces',serif; font-size:21px; font-weight:600; margin:0 0 12px; line-height:1.25; }
+  .card .q{ font-family:'Work Sans', sans-serif; font-size:15px; color:var(--chalk-dim); line-height:1.5; margin-top:auto; }

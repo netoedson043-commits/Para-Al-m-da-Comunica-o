@@ -1,0 +1,50 @@
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.035), transparent 60%),
+      radial-gradient(ellipse at 90% 100%, rgba(255,255,255,0.03), transparent 55%),
+      var(--board);
+    color:var(--chalk);
+    font-family:'Work Sans', sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--chalk-dim);
+  }
+  .fraunces{font-family:'Fraunces', serif;}
+  .caveat{font-family:'Caveat', cursive;}
+
+  a{color:inherit;}
+  button{font-family:inherit;}
+
+  /* subtle chalk-dust texture overlay */
+  .dust::before{
+    content:"";
+    position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+      radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 2px 4px;
+    opacity:0.5;
+  }
+
+  .page-view{ position:relative; z-index:1; min-height:100vh; animation:fadeIn .5s ease; }
+  @keyframes fadeIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  /* ---------- squiggle divider (signature element) ---------- */
+  .squiggle{ display:block; margin:28px auto; opacity:0.8; }
+  .squiggle path{ stroke:var(--blue); }
+
+  /* ---------- rodapé (presente em todas as páginas) ---------- */
+  footer.foot{
+    text-align:center; padding:34px 24px 46px; color:var(--chalk-dim);
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.04em;
+  }
