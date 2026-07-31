@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Créditos · Fórum Para Além da Comunicação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500;1,600&family=Work+Sans:wght@400;500;600&family=Caveat:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/variables.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/creditos.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="dust">
+
+<!-- ===================== CRÉDITOS ===================== -->
+<section class="page-view">
+  <div class="wrap">
+    <a class="back-link" href="grupos.html">← Grupos</a>
+    <div class="page-head">
+      <h2 class="page-title">Créditos</h2>
+      <p class="page-desc">Quem construiu este fórum: a orientação, o desenvolvimento do site e os seis grupos que estudaram e apresentaram cada ferramenta de comunicação.</p>
+    </div>
+
+    <div class="creditos-geral">
+      <span><b>Instrutora:</b> Cássia Ribeiro</span>
+      <span><b>Desenvolvedor do site:</b> Edson Silveira Prata Neto</span>
+    </div>
+
+    <div class="creditos-grid" id="creditos-grid"></div>
+  </div>
+</section>
+
+<script src="js/data/groups.js"></script>
+<script src="js/data/photos.js"></script>
+<script src="js/data/cnv-data.js"></script>
+<script src="js/data/group1-data.js"></script>
+<script src="js/data/group2-data.js"></script>
+<script src="js/data/group4-data.js"></script>
+<script src="js/data/group5-data.js"></script>
+<script src="js/data/group6-data.js"></script>
+<script src="js/render/render-creditos.js"></script>
+<script>window.addEventListener('DOMContentLoaded', renderCreditosGrid);</script>
+
+<footer class="foot">Fórum “Para Além da Comunicação” · Comunicação no Meio Corporativo</footer>
+</body>
+</html>

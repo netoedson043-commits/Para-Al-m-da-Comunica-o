@@ -48,5 +48,11 @@ const CNV_DATA = {
         { label:"Opção B", text:"“Estou preocupado com o prazo e preciso de colaboração para terminar. Como podemos resolver isso juntos?”", correct:true,
           feedback:"Isso é CNV: sentimento + necessidade + um pedido claro e colaborativo." }
       ]}
-  ]
+  ],
+  apoio: {
+    oQue: "A Comunicação Não Violenta (CNV) é uma forma de comunicação baseada na empatia e na conexão autêntica, que ajuda a expressar sentimentos e necessidades com clareza e a ouvir com compreensão, evitando julgamentos e conflitos.",
+    comoReconhecer: "Quando a pessoa fala com honestidade e empatia, ouve atentamente sem interromper, observa sem julgar e consegue expressar sentimentos e necessidades com clareza, criando conexões genuínas.",
+    comoAplicar: "Seguir os 4 componentes da CNV: observar os fatos sem julgamento, nomear o sentimento envolvido, identificar a necessidade por trás dele e fazer um pedido claro, positivo e realizável.",
+    oQueEvitar: "Julgamentos morais (“você é preguiçoso”), críticas e acusações, comparações, negar responsabilidade (“eu tive que fazer”) e usar exigências ou ameaças."
+  }
 };

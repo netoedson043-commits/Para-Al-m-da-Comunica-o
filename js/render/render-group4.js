@@ -35,7 +35,12 @@ function renderGrupo4Body(){
   `).join('');
 
   return `
-    ${renderTeamPhoto(G4_PHOTO, 4)}
+
+    <div class="section-block">
+      <h4>Introdução</h4>
+      <p>A comunicação assertiva é a capacidade de se expressar com clareza, respeito e firmeza — defendendo ideias, opiniões e sentimentos sem agredir o outro nem se anular. Ela fica entre dois extremos: a passividade, que evita o conflito às custas da própria opinião, e a agressividade, que impõe a opinião própria desrespeitando o outro.</p>
+      <p>Praticar a assertividade fortalece relações profissionais e pessoais, porque permite dizer o que precisa ser dito sem ferir nem se ferir.</p>
+    </div>
 
     <div class="section-block">
       <h4>Método DESC</h4>

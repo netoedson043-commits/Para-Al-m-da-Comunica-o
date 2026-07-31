@@ -85,7 +85,12 @@ function renderGrupo6Body(){
   `).join('');
 
   return `
-    ${renderTeamPhoto(G6_PHOTO, 6)}
+
+    <div class="section-block">
+      <h4>Introdução</h4>
+      <p>Conflitos surgem sempre que existem divergências de interesses, ideias ou valores entre pessoas — e isso é normal em qualquer ambiente de trabalho. O problema não é o conflito em si, mas a forma como lidamos com ele: quando bem conduzido, pode gerar aprendizado e fortalecer relações; quando mal conduzido, gera ressentimento e desgasta a equipe.</p>
+      <p>Gerir conflitos e negociar bem significa ouvir os interesses reais por trás das posições de cada lado e buscar soluções que atendam a todos.</p>
+    </div>
 
     <div class="section-block">
       <h4>Termômetro do Conflito — Autoavaliação</h4>

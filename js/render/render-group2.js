@@ -63,7 +63,6 @@ function renderGrupo2Body(){
   `).join('');
 
   return `
-    ${renderTeamPhoto(G2_PHOTO, 2)}
 
     <div class="section-block">
       <h4>Introdução</h4>

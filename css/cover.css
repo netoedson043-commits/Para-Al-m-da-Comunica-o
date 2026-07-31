@@ -24,13 +24,3 @@
     font-family:'IBM Plex Mono', monospace; font-size:12px;
     color:var(--chalk-dim); letter-spacing:0.05em; margin-top:2px;
   }
-  .cta{
-    margin-top:38px; display:inline-flex; align-items:center; gap:10px;
-    background:transparent; color:var(--chalk);
-    border:1.5px dashed rgba(243,239,227,0.55);
-    border-radius:3px 14px 3px 14px;
-    padding:14px 28px; font-size:15px; letter-spacing:0.03em;
-    cursor:pointer; transition:all .25s ease; transform:rotate(-0.4deg);
-    text-decoration:none;
-  }
-  .cta:hover{ background:rgba(232,184,75,0.1); border-color:var(--amber); color:var(--amber); transform:rotate(0deg) translateY(-2px); }

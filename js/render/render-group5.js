@@ -35,7 +35,6 @@ function renderGrupo5Body(){
   `).join('');
 
   return `
-    ${renderTeamPhoto(G5_PHOTO, 5)}
 
     <div class="section-block">
       <h4>Introdução</h4>

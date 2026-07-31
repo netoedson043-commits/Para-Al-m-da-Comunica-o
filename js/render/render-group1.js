@@ -28,7 +28,6 @@ function renderGrupo1Body(){
   `).join('');
 
   return `
-    ${renderTeamPhoto(G1_PHOTO, 1)}
 
     <div class="section-block">
       <h4>Fatos, Interpretações e Julgamentos</h4>

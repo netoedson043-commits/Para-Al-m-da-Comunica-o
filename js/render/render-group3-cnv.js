@@ -44,7 +44,6 @@ function renderCNVBody(){
   `).join("");
 
   return `
-    ${renderTeamPhoto(G3_PHOTO, 3)}
 
     <div class="section-block">
       <h4>Conceito e aplicação prática</h4>
@@ -85,6 +84,8 @@ function renderCNVBody(){
       ${quizScenarios}
       <div class="quiz-score" id="quiz-score">Responda os 3 cenários acima para ver seu resultado.</div>
     </div>
+
+    ${renderApoioTable(CNV_DATA.apoio)}
   `;
 }
 

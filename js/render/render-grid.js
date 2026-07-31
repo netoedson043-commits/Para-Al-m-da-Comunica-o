@@ -6,6 +6,7 @@ function renderGrid(){
       <span class="num">GRUPO ${g.n}</span>
       <h3>${g.title}</h3>
       <p class="q">“${g.q}”</p>
+      <span class="card-cta">Ver detalhes →</span>
     </a>
   `).join('');
 }
